@@ -1,0 +1,138 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* -----------------------------
+   THEME TOKENS
+------------------------------ */
+@theme {
+  --font-display: "Cormorant Garamond", "Playfair Display", ui-serif, Georgia, serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+
+  --radius-xs: calc(var(--radius) - 6px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
+  --radius-3xl: calc(var(--radius) + 20px);
+  --radius-4xl: calc(var(--radius) + 32px);
+
+  /* Colors mapping to CSS variables */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --color-ink: var(--ink);
+  --color-gilt: var(--gilt);
+}
+
+/* -----------------------------
+   ROOT & BASE (Ultra-Luxury Skincare Theme)
+------------------------------ */
+:root {
+  --radius: 1.25rem;
+  
+  /* Rich & Moody Botanical Aesthetics for US Market */
+  --background: #111012; 
+  --foreground: #f4f0ea; 
+  
+  --ink: #f8fafc;
+  --card: #1a181c;
+  --card-foreground: #f4f0ea;
+  
+  /* Primary & Accents (Rose Gold & Warm Champagne highlights) */
+  --primary: #d4a373;
+  --primary-foreground: #111012;
+  
+  /* Muted & Borders */
+  --muted: #221f24;
+  --muted-foreground: #a39b90;
+  
+  --accent: #d8b4fe;
+  --gilt: #e0a96d;
+  --border: rgba(255, 255, 255, 0.08);
+  
+  --glass: rgba(26, 24, 28, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --transition: 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@layer base {
+  *, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    line-height: 1.1;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+/* -----------------------------
+   CUSTOM UTILITIES
+------------------------------ */
+@utility container-xl { width: min(92%, 1440px); margin-inline: auto; }
+
+@utility display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 9vw, 9rem);
+  font-weight: 300;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+}
+
+@utility display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 300;
+  line-height: 0.95;
+}
+
+@utility luxury-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  transition: var(--transition);
+}
+
+@utility glass {
+  background: var(--glass);
+  backdrop-blur: blur(24px);
+  border: 1px solid var(--glass-border);
+}
+
+/* -----------------------------
+   ANIMATIONS & MISC
+------------------------------ */
+.gsap-fade { opacity: 0; transform: translateY(50px); }
+.marquee { animation: marquee 40s linear infinite; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+::selection { background: var(--primary); color: var(--primary-foreground); }
